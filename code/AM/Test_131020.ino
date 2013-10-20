@@ -78,12 +78,14 @@ void SPIWrite(int value)
 
 unsigned int SPIRead()
 {  
+	unsigned int data = 0;
 	// Setzte SS-Pin LOW um Slave zu aktivieren
 	digitalWrite(SLAVESELECT,LOW);
 	//  Daten Übertragen
-	SPI.transfer(0x00);
+	data = SPI.transfer(0x00);
 	// Setzte SS-Pin HIGH um Slave zu deaktivieren
 	digitalWrite(SLAVESELECT,HIGH); 
+	return data;
 }
 
 /* Übersichten zu den Konfigs hier:
